@@ -1,0 +1,48 @@
+(dp1
+S'category'
+p2
+S'Interpenetration of Cylindrical Pipes At Any Angle'
+p3
+sS'name'
+p4
+S'cylindricalatanytest'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nInterpenetrating pipe Diameter = 300.0\n \nFree Height of Interpenetrating pipe = 200.0\n \nAngle of Interpenetration = 90.0\n \nPartition Number = 12\n \nInterpenetrated pipe Diameter = 300.0\n \nN   Ln        Mn        Hn        \n0   200.0     0         0.0       \n1   220.096   78.54     20.096    \n2   275.0     78.54     75.0      \n3   350.0     78.54     150.0     \n4   275.0     78.54     75.0      \n5   220.096   78.54     20.096    \n6   200.0     78.54     0.0       \n7   220.096   78.54     20.096    \n8   275.0     78.54     75.0      \n9   350.0     78.54     150.0     \n10  275.0     78.54     75.0      \n11  220.096   78.54     20.096    \n12  200.0     78.54     0.0       \n**********************************\n \nInterpenetrating pipe Diameter = 300.0\n \nFree Height of Interpenetrating pipe = 200.0\n \nAngle of Interpenetration = 45.0\n \nPartition Number = 24\n \nInterpenetrated pipe Diameter = 300.0\n \nN   Ln        Mn        Hn        \n0   200.0     0         0.0       \n1   212.339   39.27     12.339    \n2   248.516   39.27     48.516    \n3   306.066   39.27     106.066   \n4   381.066   39.27     181.066   \n5   468.405   39.27     268.405   \n6   562.132   39.27     362.132   \n7   546.051   39.27     346.051   \n8   531.066   39.27     331.066   \n9   518.198   39.27     318.198   \n10  508.324   39.27     308.324   \n11  502.117   39.27     302.117   \n12  500.0     39.27     300.0     \n13  502.117   39.27     302.117   \n14  508.324   39.27     308.324   \n15  518.198   39.27     318.198   \n16  531.066   39.27     331.066   \n17  546.051   39.27     346.051   \n18  562.132   39.27     362.132   \n19  468.405   39.27     268.405   \n20  381.066   39.27     181.066   \n21  306.066   39.27     106.066   \n22  248.516   39.27     48.516    \n23  212.339   39.27     12.339    \n24  200.0     39.27     0.0       \n**********************************\n\n'
+p9
+a(lp10
+F0
+aF26
+aF64
+aasS'filepath'
+p11
+S'C:/SheetMetal Work/cylindricalatanytest.cd'
+p12
+sS'classname'
+p13
+S'Interpenetration Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Interpenetrating pipe Diameter'
+p17
+F300
+sS'Free Height of Interpenetrating pipe'
+p18
+F200
+sS'Angle of Interpenetration'
+p19
+F45
+sS'Partition Number'
+p20
+I24
+sS'Interpenetrated pipe Diameter'
+p21
+F300
+ss.

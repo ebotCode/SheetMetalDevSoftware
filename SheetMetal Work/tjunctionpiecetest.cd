@@ -1,0 +1,45 @@
+(dp1
+S'category'
+p2
+S'T-Junction Piece'
+p3
+sS'name'
+p4
+S'tjunctionpiecetest'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nInterpenetrating pipe Diameter = 280.0\n \nFree Height of Interpenetrating pipe = 200.0\n \nPartition Number = 12\n \nInterpenetrated pipe Diameter = 300.0\n \nN   Ln        Mn        Hn        \n0   200.0     0         0.0       \n1   217.335   73.304    17.335    \n2   261.682   73.304    61.682    \n3   296.148   73.304    96.148    \n4   261.682   73.304    61.682    \n5   217.335   73.304    17.335    \n6   200.0     73.304    0.0       \n7   217.335   73.304    17.335    \n8   261.682   73.304    61.682    \n9   296.148   73.304    96.148    \n10  261.682   73.304    61.682    \n11  217.335   73.304    17.335    \n12  200.0     73.304    0.0       \n**********************************\n \nInterpenetrating pipe Diameter = 280.0\n \nFree Height of Interpenetrating pipe = 200.0\n \nPartition Number = 24\n \nInterpenetrated pipe Diameter = 300.0\n \nN   Ln        Mn        Hn        \n0   200.0     0         0.0       \n1   204.442   36.652    4.442     \n2   217.335   36.652    17.335    \n3   237.306   36.652    37.306    \n4   261.682   36.652    61.682    \n5   285.093   36.652    85.093    \n6   296.148   36.652    96.148    \n7   285.093   36.652    85.093    \n8   261.682   36.652    61.682    \n9   237.306   36.652    37.306    \n10  217.335   36.652    17.335    \n11  204.442   36.652    4.442     \n12  200.0     36.652    0.0       \n13  204.442   36.652    4.442     \n14  217.335   36.652    17.335    \n15  237.306   36.652    37.306    \n16  261.682   36.652    61.682    \n17  285.093   36.652    85.093    \n18  296.148   36.652    96.148    \n19  285.093   36.652    85.093    \n20  261.682   36.652    61.682    \n21  237.306   36.652    37.306    \n22  217.335   36.652    17.335    \n23  204.442   36.652    4.442     \n24  200.0     36.652    0.0       \n**********************************\n\n'
+p9
+a(lp10
+F0
+aF24
+aF60
+aasS'filepath'
+p11
+S'C:/SheetMetal Work/tjunctionpiecetest.cd'
+p12
+sS'classname'
+p13
+S'Interpenetration Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Interpenetrating pipe Diameter'
+p17
+F280
+sS'Free Height of Interpenetrating pipe'
+p18
+F200
+sS'Partition Number'
+p19
+I24
+sS'Interpenetrated pipe Diameter'
+p20
+F300
+ss.

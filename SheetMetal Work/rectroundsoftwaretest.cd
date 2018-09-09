@@ -1,0 +1,47 @@
+(dp1
+S'category'
+p2
+S'Rectangular to Round Transition Piece'
+p3
+sS'name'
+p4
+S'rectroundsoftwaretest'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nDiameter = 300.0\n \nLength = 400.0\n \nHeight = 200.0\n \nFacet Number = 10\n \nBreadth = 300.0\n \n \nL4 = 200.0\n \nL2 = 206.155\n \nL3 = 206.155\n \nL1 = 200.0\n \nN   M         W         X         Y         Z         \n0   0         254.951   254.951   254.951   254.951   \n1   23.56     242.279   242.279   242.279   242.279   \n2   47.12     232.445   232.445   232.445   232.445   \n3   70.68     226.075   226.075   226.075   226.075   \n4   94.24     223.626   223.626   223.626   223.626   \n5   117.8     225.286   225.286   225.286   225.286   \n6   141.36    230.927   230.927   230.927   230.927   \n7   164.92    240.136   240.136   240.136   240.136   \n8   188.48    252.312   252.312   252.312   252.312   \n9   212.04    266.773   266.773   266.773   266.773   \n10  235.6     282.843   282.843   282.843   282.843   \n******************************************************\n\n'
+p9
+a(lp10
+F0
+aF33
+aasS'filepath'
+p11
+S'C:/SheetMetal Work/rectroundsoftwaretest.cd'
+p12
+sS'classname'
+p13
+S'Transition Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Diameter'
+p17
+F300
+sS'Length'
+p18
+F400
+sS'Height'
+p19
+F200
+sS'Facet Number'
+p20
+I10
+sS'Breadth'
+p21
+F300
+ss.

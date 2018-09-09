@@ -1,0 +1,54 @@
+(dp1
+S'category'
+p2
+S'Rectangular to Round Two Way offset Transition Piece'
+p3
+sS'name'
+p4
+S'rectroundtwotest'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nDiameter = 200.0\n \nBreadth = 400.0\n \nOffset distance y = 75.0\n \nOffset distance x = 75.0\n \nHeight = 500.0\n \nLength = 300.0\n \nFacet Number = 6\n \nN   M         W         X         Y         Z         \n0   0         584.166   530.33    571.183   515.994   \n1   26.18     573.191   525.655   559.04    510.187   \n2   52.36     565.49    524.194   548.416   505.727   \n3   78.54     561.729   526.073   540.141   502.957   \n4   104.72    562.244   531.13    534.901   502.095   \n5   130.9     566.99    538.939   533.143   503.209   \n6   157.08    575.543   548.862   535.023   506.211   \n******************************************************\n \nDiameter = 200.0\n \nBreadth = 400.0\n \nOffset distance y = 75.0\n \nOffset distance x = 75.0\n \nHeight = 500.0\n \nLength = 300.0\n \nFacet Number = 10\n \nN   M         W         X         Y         Z         \n0   0         584.166   530.33    571.183   515.994   \n1   15.71     577.235   527.156   563.765   512.371   \n2   31.42     571.364   525.097   556.766   509.175   \n3   47.13     566.732   524.218   550.378   506.493   \n4   62.84     563.486   524.547   544.781   504.401   \n5   78.55     561.729   526.073   540.141   502.957   \n6   94.26     561.519   528.748   536.598   502.203   \n7   109.97    562.863   532.49    534.261   502.16    \n8   125.68    565.717   537.185   533.204   502.83    \n9   141.39    569.989   542.695   533.461   504.194   \n10  157.1     575.543   548.862   535.023   506.211   \n******************************************************\n\n'
+p9
+a(lp10
+F0
+aF24
+aF52
+aasS'filepath'
+p11
+S'C:/SheetMetal Work/rectroundtwotest.cd'
+p12
+sS'classname'
+p13
+S'Transition Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Diameter'
+p17
+F200
+sS'Breadth'
+p18
+F400
+sS'Offset distance y'
+p19
+F75
+sS'Offset distance x'
+p20
+F75
+sS'Height'
+p21
+F500
+sS'Length'
+p22
+F300
+sS'Facet Number'
+p23
+I10
+ss.
