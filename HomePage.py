@@ -6710,8 +6710,9 @@ class TobeTopLevel(Toplevel):
         self.funcid = funcid
         Toplevel.__init__(self,root)
         self.protocol("WM_DELETE_WINDOW",self.CloseTopLevel)
+
         try:
-            self.wm_iconbitmap('SubFiles2\\Icon.ico')
+            self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
         except TclError:
             pass
 
@@ -6944,7 +6945,7 @@ class TobeTopLevel3(Toplevel): # for graph window
         self.bind("<Control-p>",self.SaveFile)
         self.bind("<MouseWheel>",self.ZoomFigure)
         try:
-            self.wm_iconbitmap('SubFiles2\\Icon.ico')
+            self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
         except TclError:
             pass
 
@@ -8037,16 +8038,21 @@ class HomeScreen(Frame):
         self.master.protocol("WM_DELETE_WINDOW", self.CloseHomeScreen)
         self.master.title("SHEET METAL WORK")
         self.master.rowconfigure(0,weight = 1)
-        try:
-            self.master.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
-##            self.master.iconmask('SubFiles2\\Icon.ico')
-        except TclError:
-            pass
-            
+
+
+        # Load Icon bitmap. 
+        if 'windows' in sys.platform :
+	        self.LoadWindowsIconBitmap()
+        elif 'linux' in sys.platform: 
+            self.LoadLinuxIconBitmap()
+        else:
+	    	pass         
+        # Setup the default filepth folder  
         try:
             b = os.getcwd()
             defaultfilepath = os.path.join(b, "SheetMetalWork")
-            os.mkdir(defaultfilepath)
+            if not os.path.isdir(defaultfilepath):
+            	os.mkdir(defaultfilepath)
         except Exception:
             pass
         
@@ -8122,6 +8128,21 @@ class HomeScreen(Frame):
             self.labellogo = Label(self.frame2,image = self.logofile)
             
         self.labellogo.grid(sticky = NE, row = 0,column = 1)
+
+    def LoadWindowsIconBitmap(self):
+        try:
+            self.master.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
+	##            self.master.iconmask('SubFiles2\\Icon.ico')
+        except TclError as message:
+	        print(message)  
+
+
+	def LoadLinuxIconBitmap(self):
+		try:
+			self.linux_bitmap = self.inter_file1 = PhotoImage(file = os.path.join("SubFiles","interfile1.tx"))
+			self.master.tk.call('wm','iconphoto',self.master._w,self.linux_bitmap)
+		except Exception as message:
+			print("Could not load bitmap on linux system : ",message)
 
 
 
