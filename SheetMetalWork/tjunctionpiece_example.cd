@@ -1,0 +1,32 @@
+(dp1
+S'category'
+p2
+S'T-Junction Piece'
+p3
+sS'name'
+p4
+S'tjunctionpiece_example'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nInterpenetrating pipe Diameter = 5.0\n \nFree Height of Interpenetrating pipe = 5.0\n \nPartition Number = 12\n \nInterpenetrated pipe Diameter = 10.0\n \nN   Ln        Mn        Hn        \n0   5.0       0         0.0       \n1   5.159     1.309     0.159     \n2   5.493     1.309     0.493     \n3   5.67      1.309     0.67      \n4   5.493     1.309     0.493     \n5   5.159     1.309     0.159     \n6   5.0       1.309     0.0       \n7   5.159     1.309     0.159     \n8   5.493     1.309     0.493     \n9   5.67      1.309     0.67      \n10  5.493     1.309     0.493     \n11  5.159     1.309     0.159     \n12  5.0       1.309     0.0       \n**********************************\n \n\n'
+p9
+a(lp10
+F0
+aF24
+aasS'filepath'
+p11
+S'/home/tobe/Documents/SWE/projects/SheetMetalSoftware/SheetMetalWork/tjunctionpiece_example.cd'
+p12
+sS'classname'
+p13
+S'Interpenetration Piece'
+p14
+sS'input'
+p15
+(dp16
+s.

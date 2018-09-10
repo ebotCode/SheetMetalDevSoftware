@@ -1,11 +1,13 @@
 import os
-
+import sys
 import cPickle
 import re
 from Tkinter import*
 from tkMessageBox import*
 from tkFileDialog import askopenfilename,asksaveasfilename
 import Pmw
+
+
 Pmw.initialise()
 
 import math
@@ -47,6 +49,14 @@ def Decimal(x,place= 3):
 
 def CosineAngle(x,y,z):
     return   Acos(((pow(y,2)) + (pow(z,2)) - (pow(x,2)))/(2*y*z))
+
+
+def GetZoomedStateOption(platform_type):
+    if 'linux' in platform_type:
+        return 'normal'
+    else: # windows. 
+
+        return 'zoomed'    
     
 ########################################################################
 ########################################################################
@@ -1360,7 +1370,10 @@ class GraphGui:
         self.count += 1
         if self.count == 1:
             self.master = parent
-            self.master.state('zoomed')#geometry("1200x500+800+150")
+            try:
+                self.master.state(GetZoomedStateOption(sys.platform))
+            except Exception:
+                pass             
             self.master.CreateMenuBar() #Include menubar
             self.master.title(self.optionref.name+" Plot")
             self.master.SetLinkerObject(self.linkerobject)
@@ -6633,7 +6646,7 @@ class SaveDialog:
     def __init__(self,parent):
         self.name = None
         b = os.getcwd()
-        defaultfilepath = b + "\\SheetMetal Work"
+        defaultfilepath = os.path.join(b ,"SheetMetalWork")
         self.initialdir = defaultfilepath
         self.defaultext = ".cd"
         self.parent = parent
@@ -6704,7 +6717,11 @@ class TobeTopLevel(Toplevel):
 
 
         if maximize:
-            self.state("zoomed")
+            try:
+                self.state(GetZoomedStateOption(sys.platform))
+            except Exception:
+                pass             
+            # self.state("zoomed")
         self.bind("<Control-s>",self.SaveFile)
         self.bind("<Control-o>",self.OpenFile)
         
@@ -6811,7 +6828,7 @@ class TobeTopLevel(Toplevel):
             self.errordialog.ShowErrorMessage("file","Cannot Open file")
             return 0
         except Exception:
-            self.errordialog.ShowErrorMessage("file","Cannot Open file\n")
+            self.errordialog.ShowErrorMessage("file","Cannot Open file")
             try:
                 self.fileobj2.close()
             except Exception:
@@ -7259,6 +7276,12 @@ class DisplayResultClass:
 
 
     def InsertData(self,dimensiondict,valuedict,othersdict = None):
+        """
+            Displays the data in tabular format. 
+
+        Note:
+            number of deciman places  = 4. 
+        """
         if self.overwrite_variable.get():
             self.ClearScreen()
         self.indexpos += 1
@@ -7280,28 +7303,37 @@ class DisplayResultClass:
             if index != 0:              
                 self.columnheader[0],self.columnheader[index] = self.columnheader[index],self.columnheader[0]
             
-            
-            
 
-            formatstring  = "%-8s  "
-            formatstring2 = "%-2s  "
+            # First, determine the maxlength of string in each column. 
+            max_column_lengths = {item:len("%.4f"%max(valuedict[item])) for item in valuedict}
+
+            # construct the format string template for each row. 
+            number_format_template = "{:%d}  "
+            float_format_template  = "{:%d}  "
             
-            row = ""
-            row += formatstring2%self.columnheader[0]
+            # Determine String formatting 
+            header_format = "{:^5}  "
+            header_row = ""
+            print("Colummn header = ",self.columnheader[0])
+
+            header_row += '{:5}  '.format(self.columnheader[0])
             for i in range(len(self.columnheader)-1):
-                row += formatstring%self.columnheader[i+1]
+                header_row += header_format.format(self.columnheader[i+1])
 
                     
-            self.Insert(row)
+            self.Insert(header_row)
             
             row2 = ""
             for i in range(len(valuedict["N"])):
                 for item in self.columnheader:
+                    nform = number_format_template%max_column_lengths[item]
+                    fform = float_format_template%max_column_lengths[item]
+
                     if item == "N":
-                        row2 += formatstring2%valuedict[item][i]
+                        row2 += nform.format(valuedict[item][i])
                     else:
-                        
-                        row2 += formatstring%valuedict[item][i]               
+                        vvalue = '{:.4f}'.format(valuedict[item][i])
+                        row2 += fform.format(vvalue)
                 self.Insert(row2)
                 self.RowMax(len(row2))
                 row2 = ""
@@ -7995,21 +8027,27 @@ class OffsetPiecePage(PageTemplate):
 class HomeScreen(Frame):
     def __init__(self):
         Frame.__init__(self)
-        self.master.state('zoomed')
+
+        try:
+            self.master.state(GetZoomedStateOption(sys.platform))
+        except Exception:
+            pass 
+           
+
         self.master.protocol("WM_DELETE_WINDOW", self.CloseHomeScreen)
         self.master.title("SHEET METAL WORK")
         self.master.rowconfigure(0,weight = 1)
         try:
-            self.master.wm_iconbitmap('SubFiles2\\Icon.ico')
+            self.master.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
 ##            self.master.iconmask('SubFiles2\\Icon.ico')
         except TclError:
             pass
             
         try:
             b = os.getcwd()
-            defaultfilepath = b + "\\SheetMetal Work"
+            defaultfilepath = os.path.join(b, "SheetMetalWork")
             os.mkdir(defaultfilepath)
-        except WindowsError:
+        except Exception:
             pass
         
         self.master.columnconfigure(0,weight = 1)
@@ -8043,8 +8081,8 @@ class HomeScreen(Frame):
         
 
         try:
-            self.inter_file1 = PhotoImage(file = "SubFiles\\interfile1.tx")
-            self.trans_file1 = PhotoImage(file = "SubFiles\\transfile1.tx")
+            self.inter_file1 = PhotoImage(file = os.path.join("SubFiles","interfile1.tx"))
+            self.trans_file1 = PhotoImage(file = os.path.join("SubFiles","transfile1.tx"))
         except Exception:
             self.button1 = Button(self.frame1,\
                                   text = "Interpenetration Piece",\
@@ -8075,7 +8113,7 @@ class HomeScreen(Frame):
         self.label = Label(self.frame2,text = "Dr. S. Gbeminiyi", font = "Arial 10 ")
         self.label.grid(sticky = NW, row = 0,column = 0)
         try:
-            self.logofile = PhotoImage(file = "SubFIles\\transfile2.tx")
+            self.logofile = PhotoImage(file = os.path.join("SubFiles","transfile2.tx"))
         except Exception,message:
             self.labellogo = Label(self.frame2,text = self.wtext , font = "Arial 7 ")
             
@@ -8151,7 +8189,7 @@ class TobeTopLevel2(Toplevel):
 ##        self.geometry
         self.CreateMenuBar()
         try:
-            self.wm_iconbitmap('SubFiles2\\Icon.ico')
+            self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
         except TclError:
             pass
 
@@ -8242,7 +8280,7 @@ class TobeTopLevel2(Toplevel):
         except IOError:
             self.errordialog.ShowErrorMessage("file","Cannot Open file")
             return 0
-        except Exception:
+        except Exception,msg:
             self.errordialog.ShowErrorMessage("file","Cannot Open file\n")
             try:
                 self.fileobj2.close()
@@ -8283,12 +8321,12 @@ class TransitionPiecePage:
         
         
 
-
-        imagenames = ["SubFiles2\\transitionpieces\\rect_round.gif",\
-                      "SubFiles2\\transitionpieces\\oneway_offset.gif",\
-                      "SubFiles2\\transitionpieces\\twoway_offset.gif",\
-                      "SubFiles2\\transitionpieces\\oblique_plane.gif",\
-                      "SubFiles2\\transitionpieces\\conical_frustum.gif"]
+        base_dir = os.path.join("SubFiles2","transitionpieces")
+        imagenames = [os.path.join(base_dir,"rect_round.gif"),\
+                      os.path.join(base_dir,"oneway_offset.gif"),\
+                      os.path.join(base_dir,"twoway_offset.gif"),\
+                      os.path.join(base_dir,"oblique_plane.gif"),\
+                      os.path.join(base_dir,"conical_frustum.gif")]
 
         self.imageobj = {}
         self.optionnames = ["Rectangular to Round Transition Piece",\
@@ -8323,7 +8361,7 @@ class TransitionPiecePage:
             
         
         try:
-            self.grndimage = PhotoImage(file = "\\transition_home.gif")
+            self.grndimage = PhotoImage(file = os.path.join(os.getcwd(),"transition_home.gif"))
             raise IOError
         except Exception:
             self.frame1 = Frame(self.frame)
@@ -8440,13 +8478,15 @@ class InterpenetrationPiecePage:
              "Right Cylinder Cut Obliquely":CylinderCutAtAnyPage,\
               "Elbow Piece":ElbowPiecePage,"Offset Piece":OffsetPiecePage}
 
-        imagenames = ["SubFiles2\\interpenetrationpieces\\t_junction.gif",\
-                      "SubFiles2\\interpenetrationpieces\\cylindrical_any.gif",\
-                      "SubFiles2\\interpenetrationpieces\\square_cylinder.gif",\
-                      "SubFiles2\\interpenetrationpieces\\y_junction.gif",\
-                      "SubFiles2\\interpenetrationpieces\\offset.gif",\
-                      "SubFiles2\\interpenetrationpieces\\elbow.gif",\
-                      "SubFiles2\\interpenetrationpieces\\cylinder_oblique.gif"]
+        base_dir = os.path.join("SubFiles2","interpenetrationpieces")
+
+        imagenames = [os.path.join(base_dir,"t_junction.gif"),\
+                      os.path.join(base_dir,"cylindrical_any.gif"),\
+                      os.path.join(base_dir,"square_cylinder.gif"),\
+                      os.path.join(base_dir,"y_junction.gif"),\
+                      os.path.join(base_dir,"offset.gif"),\
+                      os.path.join(base_dir,"elbow.gif"),\
+                      os.path.join(base_dir,"cylinder_oblique.gif")]
 
         self.imageobj = {}
         self.optionnames = [\
@@ -8483,7 +8523,7 @@ class InterpenetrationPiecePage:
 
 
         try:
-            self.grndimage = PhotoImage(file = "SubFiles2\\transition_home.gif")
+            self.grndimage = PhotoImage(file = os.path.join("SubFiles2","transition_home.gif"))
             raise IOError
         except Exception:
             self.frame1 = Frame(self.frame)
@@ -8591,4 +8631,3 @@ def main():
 if __name__ == "__main__":
     main()
         
-e
