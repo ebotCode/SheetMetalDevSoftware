@@ -1,0 +1,53 @@
+(dp1
+S'category'
+p2
+S'Rectangular to Round Two Way offset Transition Piece'
+p3
+sS'name'
+p4
+S'rectangular2round_example'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nDiameter = 100.0\n \nBreadth = 40.0\n \nOffset distance y = 10.0\n \nOffset distance x = 10.0\n \nHeight = 40.0\n \nLength = 40.0\n \nFacet Number = 10\n \n \nL4 = 56.569\n \nL2 = 56.569\n \nL3 = 44.721\n \nL1 = 44.721\n \n N |   M    |   W    |   X    |   Y    |   Z    \n___|________|________|________|________|________\n0  |0.0000  |53.8520 |45.8260 |64.0310 |57.4460 \n1  |7.8500  |49.6750 |44.5030 |60.3570 |56.1770 \n2  |15.7000 |46.0410 |44.0210 |56.7620 |55.1360 \n3  |23.5500 |43.1860 |44.4180 |53.3570 |54.3600 \n4  |31.4000 |41.3470 |45.6640 |50.2760 |53.8810 \n5  |39.2500 |40.7110 |47.6610 |47.6610 |53.7200 \n6  |47.1000 |41.3470 |50.2760 |45.6640 |53.8810 \n7  |54.9500 |43.1860 |53.3570 |44.4180 |54.3600 \n8  |62.8000 |46.0410 |56.7620 |44.0210 |55.1360 \n9  |70.6500 |49.6750 |60.3570 |44.5030 |56.1770 \n10 |78.5000 |53.8520 |64.0310 |45.8260 |57.4460 \n************************************************\n\n'
+p9
+a(lp10
+F0
+aF38
+aasS'filepath'
+p11
+S'/home/tobe/Documents/SWE/projects/SheetMetalSoftware/src/SheetMetalWorkExamples/rectangular2round_example.cd'
+p12
+sS'classname'
+p13
+S'Transition Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Diameter'
+p17
+F100
+sS'Breadth'
+p18
+F40
+sS'Offset distance y'
+p19
+F10
+sS'Offset distance x'
+p20
+F10
+sS'Height'
+p21
+F40
+sS'Length'
+p22
+F40
+sS'Facet Number'
+p23
+I10
+ss.

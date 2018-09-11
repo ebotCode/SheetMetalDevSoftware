@@ -3,6 +3,8 @@ from DialogsGui import *
 import re 
 import os 
 import cPickle 
+import sys 
+from PlatformUtils import * 
 
 class TobeTopLevel(Toplevel):
     def __init__(self,root,parent,funcid = None,name = "project",\
@@ -23,10 +25,26 @@ class TobeTopLevel(Toplevel):
         Toplevel.__init__(self,root)
         self.protocol("WM_DELETE_WINDOW",self.CloseTopLevel)
 
-        try:
-            self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
-        except TclError:
-            pass
+
+        if 'win' in sys.platform :
+            try:
+                self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
+            except Exception as message:
+                pass
+
+        elif 'linux' in sys.platform: 
+            try:
+                self.linux_bitmap  = PhotoImage(file = os.path.join("SubFiles","interfile1.tx"))
+                self.tk.call('wm','iconphoto',self._w,self.linux_bitmap)
+            except Exception as message:
+                pass #print("Could not load bitmap on linux system : ",message)
+        else:
+            pass           
+
+        # try:
+        #     self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
+        # except TclError:
+        #     pass
 
 
         if maximize:

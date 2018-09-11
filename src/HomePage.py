@@ -10,17 +10,12 @@ import Pmw
 
 Pmw.initialise()
 import math
-import MathUtils as mutils 
+from MathUtils import*
+from PlatformUtils import * 
 
 from TransitionPiecePageClass import * 
 from InterpenetrationPiecePageClass import * 
 
-def GetZoomedStateOption(platform_type):
-    if 'linux' in platform_type:
-        return 'normal'
-    else: # windows. 
-
-        return 'zoomed'    
 
 class HomeScreen(Frame):
     def __init__(self):

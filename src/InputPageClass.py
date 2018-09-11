@@ -6,7 +6,7 @@ class InputPageClass:
     def __init__(self,parent,displaynames,inputnames,displaynames2 = None):
         self.parent = parent
         self.name = self.parent.name
-        self.displayobj = DisplayResultClass(self,row = 0,column = 0,size = (900,500))
+        self.displayobj = DisplayResultClass(self,row = 0,column = 0,size = (400,300))
         self.SetDisplayNames(displaynames)
         self.SetInputNames(inputnames)
         self.SetDisplayNames2(displaynames2)

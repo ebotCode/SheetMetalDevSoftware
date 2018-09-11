@@ -1,0 +1,44 @@
+(dp1
+S'category'
+p2
+S'T-Junction Piece'
+p3
+sS'name'
+p4
+S'tjunction_example'
+p5
+sS'format'
+p6
+I1
+sS'text'
+p7
+(lp8
+S' \nInterpenetrating pipe Diameter = 40.0\n \nFree Height of Interpenetrating pipe = 40.0\n \nPartition Number = 20\n \nInterpenetrated pipe Diameter = 100.0\n \n N |   Ln   |  Mn   |  Hn   \n___|________|_______|_______\n0  |40.0000 |0.0000 |0.0000 \n1  |40.3830 |6.2830 |0.3830 \n2  |41.4020 |6.2830 |1.4020 \n3  |42.6900 |6.2830 |2.6900 \n4  |43.7590 |6.2830 |3.7590 \n5  |44.1740 |6.2830 |4.1740 \n6  |43.7590 |6.2830 |3.7590 \n7  |42.6900 |6.2830 |2.6900 \n8  |41.4020 |6.2830 |1.4020 \n9  |40.3830 |6.2830 |0.3830 \n10 |40.0000 |6.2830 |0.0000 \n11 |40.3830 |6.2830 |0.3830 \n12 |41.4020 |6.2830 |1.4020 \n13 |42.6900 |6.2830 |2.6900 \n14 |43.7590 |6.2830 |3.7590 \n15 |44.1740 |6.2830 |4.1740 \n16 |43.7590 |6.2830 |3.7590 \n17 |42.6900 |6.2830 |2.6900 \n18 |41.4020 |6.2830 |1.4020 \n19 |40.3830 |6.2830 |0.3830 \n20 |40.0000 |6.2830 |0.0000 \n****************************\n\n'
+p9
+a(lp10
+F0
+aF33
+aasS'filepath'
+p11
+S'/home/tobe/Documents/SWE/projects/SheetMetalSoftware/src/SheetMetalWorkExamples/tjunction_example.cd'
+p12
+sS'classname'
+p13
+S'Interpenetration Piece'
+p14
+sS'input'
+p15
+(dp16
+S'Interpenetrating pipe Diameter'
+p17
+F40
+sS'Free Height of Interpenetrating pipe'
+p18
+F40
+sS'Partition Number'
+p19
+I20
+sS'Interpenetrated pipe Diameter'
+p20
+F100
+ss.

@@ -3,6 +3,7 @@ from DialogsGui import *
 import re 
 import os 
 import shelve 
+import sys 
 
 class TobeTopLevel3(Toplevel): # for graph window
     def __init__(self,root,parent,funcid = None,name = "project",askoption = 0,windowtype = 0):
@@ -23,10 +24,27 @@ class TobeTopLevel3(Toplevel): # for graph window
         self.protocol("WM_DELETE_WINDOW",self.CloseTopLevel)
         self.bind("<Control-p>",self.SaveFile)
         self.bind("<MouseWheel>",self.ZoomFigure)
-        try:
-            self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
-        except TclError:
-            pass
+
+        # Load Icon 
+        if 'win' in sys.platform :
+            try:
+                self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
+            except Exception as message:
+                pass
+
+        elif 'linux' in sys.platform: 
+            try:
+                self.linux_bitmap  = PhotoImage(file = os.path.join("SubFiles","interfile1.tx"))
+                self.tk.call('wm','iconphoto',self._w,self.linux_bitmap)
+            except Exception as message:
+                pass #print("Could not load bitmap on linux system : ",message)
+        else:
+            pass   
+        # 
+        # try:
+        #     self.wm_iconbitmap(os.path.join('SubFiles2','Icon.ico'))
+        # except TclError:
+        #     pass
 
 
         self.CreateMenuBar2()

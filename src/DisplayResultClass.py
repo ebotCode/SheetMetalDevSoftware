@@ -1,11 +1,12 @@
 from Tkinter import *
 from MathUtils import * 
+from TabularTextDisplayClass import * 
 
 import Pmw 
-Pmw.initialise()
+Pmw.initialise(size=16)
 
 class DisplayResultClass:
-    def __init__(self,parent,row= 0, column = 0,ftype = 0,size = (700,300)):
+    def __init__(self,parent,row= 0, column = 0,ftype = 0,size = (400,300)):
         self.parent = parent
         self.row =  row
         self.column = column
@@ -16,6 +17,7 @@ class DisplayResultClass:
         self.indexlist = [0.0]
         self.indexpos = -1
         self.rowmax4 = 0
+        self.tabular_obj = TabularTextDisplay()
 
     def CreateWindow(self,frame):
         
@@ -29,36 +31,35 @@ class DisplayResultClass:
                     row = self.row,column = self.column)
 
     def CreateDisplayScreen2(self):
-        fixedFont = Pmw.logicalfont('Fixed')
+        fixedFont = Pmw.logicalfont()
         self.scrolledtext =\
             Pmw.ScrolledText(self.frame,\
-                hscrollmode = "static",\
-                             borderframe = 1,\
-                
+                # borderframe = 1,
                 labelpos = 'n',\
                 label_text = "Result",\
-                label_font = fixedFont,\
-
-                usehullsize = 1,\
-                hull_width = self.size[0],\
-                hull_height = self.size[1],\
-
-                text_wrap = 'none',\
-                text_font = fixedFont,\
-                text_foreground = 'black',\
-                text_height = 5,\
-                text_width = 5,\
-
-
-                text_padx = 4,\
-                text_pady = 4,\
-
+                columnheader = 0,
+                rowheader = 0,
+                rowcolumnheader = 0,
+                usehullsize = 1,
+                hull_width = self.size[0], #400,
+                hull_height = self.size[1], #300,
+                text_wrap = 'none',
+                # text_font = fixedFont,
+                # text_size = 10,
+                # Header_font = fixedFont,
+                # Header_foreground = 'blue',
+                # rowheader_width = 3,
+                # rowcolumnheader_width = 3,
+                text_padx = 4,
+                text_pady = 4,
+                # Header_padx = 4,
+                # rowheader_pady = 4,
                              )
         self.DisableScreen()
         
 
         self.scrolledtext.grid(sticky = W+E+N+S, row = 0,\
-                               column = 0)
+                               column = 0,padx= 5)
 
     def CreateButton(self):
         self.buttonframe = Frame(self.frame)
@@ -192,7 +193,7 @@ class DisplayResultClass:
             if index != 0:              
                 self.columnheader[0],self.columnheader[index] = self.columnheader[index],self.columnheader[0]
             
-
+            """
             # First, determine the maxlength of string in each column. 
             max_column_lengths = {item:len("%.4f"%max(valuedict[item])) for item in valuedict}
 
@@ -208,8 +209,7 @@ class DisplayResultClass:
             header_row += '{:5}  '.format(self.columnheader[0])
             for i in range(len(self.columnheader)-1):
                 header_row += header_format.format(self.columnheader[i+1])
-
-                    
+            
             self.Insert(header_row)
             
             row2 = ""
@@ -226,6 +226,17 @@ class DisplayResultClass:
                 self.Insert(row2)
                 self.RowMax(len(row2))
                 row2 = ""
+            """
+
+            header_rows,data_rows = self.tabular_obj.formatAsTable(valuedict,firstcolumn = "N")
+            # insert header rows
+            for item in header_rows:
+                self.Insert(item)
+            
+            # insert header columns
+            for item in data_rows:
+                self.Insert(item)
+                self.RowMax(len(item))
 
         if self.rowmax:
             self.MarkEnd1()
